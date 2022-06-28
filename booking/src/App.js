@@ -92,8 +92,8 @@ const deleteProfile = (event) => {
       return(
         <div key={getOne.id}>
         
-        <h2>Name: {getOne.firstname}</h2>
-        <h2>Last name: {getOne.lastname}</h2>
+        <h2> Name: {getOne.firstname}</h2>
+        <h2> Last name: {getOne.lastname}</h2>
         <h2> Pets: {getOne.pets}</h2>
         <h2> Email: {getOne.email}</h2>
         <h2> Phone: {getOne.phone}</h2>
