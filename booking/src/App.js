@@ -7,28 +7,28 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 
 function App() {
-  // const [clients, setClients] = useState([])
-  // const [firstname, setFirstName] = useState()
-  // const [lastname, setLastName] = useState()
-  // const [pets, setPets] = useState([])
-  // const[email, setEmail] = useState()
-  // const[password, setPassword] = useState()
-  // const [phone, setPhone] = useState()
-
+  const [clients, setClients] = useState([])
+  const [firstname, setFirstName] = useState()
+  const [lastname, setLastName] = useState()
+  const [pets, setPets] = useState([])
+  const[email, setEmail] = useState()
+  const[password, setPassword] = useState()
+  const [phone, setPhone] = useState()
+  const [currentClient, setCurrentClient] = useState()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
   }
-//___FETCH CLIENTS
-// const getClients = () =>{
-//   axios.get("http://localhost:5000").then(response =>{
-//     setClients(response.data)
-//   })
-// } 
+// ___FETCH CLIENTS
+const getClients = () =>{
+  axios.get("http://localhost:5000").then(response =>{
+    setClients(response.data)
+  })
+} 
 
-// useEffect(() => {
-//   getClients();
-// }, []);
+useEffect(() => {
+  getClients();
+}, []);
 
 
 //___CREATE PROFILE
@@ -51,36 +51,36 @@ function App() {
 // )
 // }
 
-//____UPDATE PROFILE
-//  const updateProfile = (event) => {
-//   event.preventDefault();
+// ____UPDATE PROFILE
+ const updateProfile = (event) => {
+  event.preventDefault();
   
-//   axios.put( "http://localhost:5000/" + event.target.id,
-//          {
-//     firstname: firstname,
-//     lastname: lastname,
-//     pets: pets,
-//     phone: phone ,
-//     email: email, 
-//     password: password
-//          }).then(
-//       (response) => {
-//           setClients(response.data)
-//       }
-//   )
-// }
-//____DELETE PROFILE
+  axios.put( "http://localhost:5000/" + event.target.id,
+         {
+    firstname: firstname,
+    lastname: lastname,
+    pets: pets,
+    phone: phone ,
+    email: email, 
+    password: password
+         }).then(
+      (response) => {
+          setClients(response.data)
+      }
+  )
+}
+// ____DELETE PROFILE
 
-// const deleteProfile = (event) => {
-//   axios.delete("http://localhost:5000/" + event.target.value).then(
-//       (response) => {
-//           setClients(
-//              response.data
-//           )
-//       }
-//   )
+const deleteProfile = (event) => {
+  axios.delete("http://localhost:5000/" + event.target.value).then(
+      (response) => {
+          setClients(
+             response.data
+          )
+      }
+  )
 
-// }
+}
   return (
     <>
 
@@ -88,7 +88,7 @@ function App() {
     <h1>The Great Catsby</h1>
 
         <Link to="/login">Login</Link> |{" "}
-        <Link to="/signup">Sign Up</Link>|{" "}
+        <Link to="/signup" >Sign Up</Link>|{" "}
         <Link to="/home">Home</Link>
   {/* <Routes>
 <Route exact path="/login" element={<Login />}/>
@@ -114,7 +114,7 @@ function App() {
       <input type='number' placeholder='Phone' onChange= {e=> setPhone(e.target.value)}/><br/>
       <input type= 'submit' value='Submit'/>
     </form>
-</div>
+</div> */}
 
     {clients.map((getOne) =>{
       return(
@@ -147,7 +147,7 @@ function App() {
         </div>
 
       )
-    })} */}
+    })}
 
     </>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import{ React} from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './index.css';
@@ -7,15 +7,18 @@ import reportWebVitals from './reportWebVitals';
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import { useState } from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+   
   <BrowserRouter>
+  
   <Routes>
     <Route path="/" element={<App />} />
     <Route exact path="/login" element={<Login />}/>
     <Route exact path="/signup" element={<SignUp/>}/>
-    <Route exact path="/home" element={<Home />}/>
+    <Route exact path="/home" element={<Home/>}/>
   </Routes>
 </BrowserRouter>
 );

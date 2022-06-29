@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route, Navigate, Link} from 'react-router-dom'
 
 import { toast } from "react-toastify";
 import axios from 'axios'
-const SignUp= ()=>{
+const SignUp= (props)=>{
     const [clients, setClients] = useState([])
     const [firstname, setFirstName] = useState()
     const [lastname, setLastName] = useState()
@@ -11,7 +11,7 @@ const SignUp= ()=>{
     const[email, setEmail] = useState()
     const[password, setPassword] = useState()
     const [phone, setPhone] = useState()
-
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
 
 
     const getClients = () =>{
@@ -39,15 +39,17 @@ const createProfile = (event)=>{
 
   } ).then(
     (response) => {
-        setClients(response.data
-        )
+        setClients(response.data)
+        setIsAuthenticated(true)
     }
 )
 }
+
     return(
         <>
         <h1>Sign Up</h1>
         <div className='form'>
+        { !isAuthenticated ? 
      <form onSubmit = {createProfile}>
       <label>First Name</label>
       <input type='text' placeholder='First Name' onChange= {e=> setFirstName(e.target.value)}/><br/>
@@ -62,7 +64,7 @@ const createProfile = (event)=>{
       <label>Phone</label>
       <input type='number' placeholder='Phone' onChange= {e=> setPhone(e.target.value)}/><br/>
       <input type= 'submit' value='Submit'/>
-    </form>
+    </form>  : <Navigate to="/login"/>}
     <Link to="/login">Login</Link>
 </div>
         </>
