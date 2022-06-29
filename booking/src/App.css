@@ -40,3 +40,19 @@
 h1 {
 text-align: center;
 }
+
+.clients{
+  margin-left: 100px;
+  margin-bottom: 50px;
+  border-bottom: 5px solid pink;
+}
+
+.form{
+  text-align: center;
+}
+
+input{
+  margin-bottom: 10px;
+  height: 20px;
+  margin-left: 10px;
+}
