@@ -1,7 +1,7 @@
 import './App.css';
 import {React, useState, useEffect} from 'react';
 import axios from 'axios';
-import {BrowserRouter, Routes, Route, Redirect, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate, Link} from 'react-router-dom'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
@@ -14,6 +14,11 @@ function App() {
   // const[email, setEmail] = useState()
   // const[password, setPassword] = useState()
   // const [phone, setPhone] = useState()
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const setAuth = boolean => {
+    setIsAuthenticated(boolean);
+  }
 //___FETCH CLIENTS
 // const getClients = () =>{
 //   axios.get("http://localhost:5000").then(response =>{
@@ -82,7 +87,7 @@ function App() {
 {/* <BrowserRouter> */}
     <h1>The Great Catsby</h1>
 
-    <Link to="/login">Login</Link> |{" "}
+        <Link to="/login">Login</Link> |{" "}
         <Link to="/signup">Sign Up</Link>|{" "}
         <Link to="/home">Home</Link>
   {/* <Routes>
