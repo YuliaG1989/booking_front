@@ -10,6 +10,7 @@ import Login from './components/Login'
 import { useState } from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
    
   <BrowserRouter>
@@ -18,7 +19,7 @@ root.render(
     <Route path="/" element={<App />} />
     <Route exact path="/login" element={<Login />}/>
     <Route exact path="/signup" element={<SignUp/>}/>
-    <Route exact path="/home" element={<Home/>}/>
+    <Route exact path="/home" element={<Home />}/>
   </Routes>
 </BrowserRouter>
 );

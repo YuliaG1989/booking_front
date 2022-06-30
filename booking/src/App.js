@@ -14,7 +14,7 @@ function App() {
   const[email, setEmail] = useState()
   const[password, setPassword] = useState()
   const [phone, setPhone] = useState()
-  const [currentClient, setCurrentClient] = useState()
+
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
@@ -84,18 +84,13 @@ const deleteProfile = (event) => {
   return (
     <>
 
-{/* <BrowserRouter> */}
+
     <h1>The Great Catsby</h1>
 
         <Link to="/login">Login</Link> |{" "}
         <Link to="/signup" >Sign Up</Link>|{" "}
         <Link to="/home">Home</Link>
-  {/* <Routes>
-<Route exact path="/login" element={<Login />}/>
-<Route exact path="/signup" element={<SignUp/>}/>
-<Route exact path="/home" element={<Home />}/>
-  </Routes>
-  </BrowserRouter> */}
+ 
 
 
 {/* <div className='form'>
