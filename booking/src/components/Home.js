@@ -1,13 +1,18 @@
 import {React, useState, useEffect} from 'react'
 import { Link, Navigate } from "react-router-dom";
-import axios from 'axios'
+
+
+
+
 const Home = ()=>{
+
+
 const [currentClient, setCurrentClient]= useState()
-    // ___FETCH CLIENTS
+   
 
-    // const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(true)
   
-
+ // ___FETCH CLIENTS
     const getCurrentClient = async () => {
       try {
         const res = await fetch("http://localhost:5000/home/", {
@@ -22,16 +27,15 @@ const [currentClient, setCurrentClient]= useState()
         console.error(err.message);
       }
     };
-  // const logout = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     localStorage.removeItem("token");
-  //     setIsAuthenticated
 
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
+    //____LOGOUT
+    const Logout = (e) => {
+
+      e.preventDefault();
+  
+      localStorage.removeItem("token");
+      
+    };
 
   useEffect(() => {
     getCurrentClient();
@@ -40,12 +44,12 @@ const [currentClient, setCurrentClient]= useState()
     return(
         <>
         <h1>Home</h1>
-<h1>Welcome, {currentClient}  </h1>
+        <h1>Welcome, {currentClient}  </h1>
            
 
          
        
-
+        <button onClick={Logout}>LogOut</button>
         <Link to="/">Main</Link>
         
         </>

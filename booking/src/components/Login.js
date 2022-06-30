@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {React, useState,  useEffect} from 'react'
 import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -23,14 +22,6 @@ const Login = ()=>{
           const body = { email, password };
 
           const response = 
-          // await axios.post("http://localhost:5000/login", body)  
-            
-          //   localStorage.setItem('user', response.data)
-          //   console.log(response.data.name)
-          //   setCurrentClient(response.data.name)
-          //   setAuth(true)
-    
-
            await fetch(
             "http://localhost:5000/login",
             {
@@ -65,7 +56,7 @@ const Login = ()=>{
         { !isAuthenticated ? 
         <form onSubmit ={onSubmitForm} >
             <label>Email</label>
-            <input type="text" name = 'email' placeholder="Email"onChange={e=>onChange(e)}></input><br/>
+            <input type="text" name = 'email' placeholder="Email" onChange={e=>onChange(e)}></input><br/>
             <label>Password</label>
             <input type="password" name = 'password' placeholder="Password" onChange={e=>onChange(e)}></input><br/>
             <input type="submit" value = "Login"></input>
