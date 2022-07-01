@@ -1,6 +1,10 @@
 import {React, useState, useEffect} from 'react'
 import { Link, Navigate } from "react-router-dom";
-
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import Input from '@mui/material/Input'
+import Container from '@mui/material/Container'
+import FormHelperText from '@mui/material/FormHelperText'
 
 
 
@@ -38,12 +42,15 @@ const [isAuthenticated, setIsAuthenticated] = useState(true)
   
     return(
         <>
-        <h1>Home</h1>
-        <h1>Welcome, {currentClient}  </h1>
-       <button onClick={Logout}> LogOut</button>
-       {!isAuthenticated ? <Navigate to="/"/>: null}
-        <Link to="/">Main</Link>
         
+        <h1>Welcome, {currentClient} !</h1>
+        <Container>
+       <Button   variant="contained" onClick={Logout}> LogOut</Button>
+       {!isAuthenticated ? <Navigate to="/"/>: null}
+       <Link to="/">
+      <Button variant="contained"> Main Page </Button>
+      </Link>
+      </Container>
         </>
     )
 }

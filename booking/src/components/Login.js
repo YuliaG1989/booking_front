@@ -1,6 +1,11 @@
 import {React, useState,  useEffect} from 'react'
 import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import Input from '@mui/material/Input'
+import Container from '@mui/material/Container'
+import FormHelperText from '@mui/material/FormHelperText'
 
 const Login = ()=>{
     const [currentClient, setCurrentClient] = useState({
@@ -53,16 +58,30 @@ const Login = ()=>{
     return(
         <>
         <h1>Login</h1>
+        <Container className='form'>
+
         { !isAuthenticated ? 
+        
         <form onSubmit ={onSubmitForm} >
-            <label>Email</label>
-            <input type="text" name = 'email' placeholder="Email" onChange={e=>onChange(e)}></input><br/>
-            <label>Password</label>
-            <input type="password" name = 'password' placeholder="Password" onChange={e=>onChange(e)}></input><br/>
-            <input type="submit" value = "Login"></input>
+            <FormControl sx={{marginTop: 20}}>
+            <Input sx={{width:400}} type="text" name = 'email' placeholder="Email" onChange={e=>onChange(e)}/><br/>
+          
+            <Input sx={{width:400}} type="password" name = 'password' placeholder="Password" onChange={e=>onChange(e)}/><br/>
+            <Button sx={{width:90}} variant="contained" type="submit" value = "Login">Sign In</Button>
+            </FormControl>
         </form>
         : <Navigate to="/home"/>}
-        <Link to="/signup">Sign Up</Link>|{" "}
+        <FormHelperText ><h4>Don't Have an Account? Create One</h4>
+        <Link to="/signup">
+        <Button variant="contained"> Sign Up </Button>
+        </Link>
+        </FormHelperText>
+        <FormHelperText ><h4>Or Go back to the Main Page</h4>
+        <Link to="/">
+        <Button variant="contained"> Main Page </Button>
+        </Link>
+        </FormHelperText>
+        </Container>
         </>
     )
 }

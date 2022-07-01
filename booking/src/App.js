@@ -5,6 +5,9 @@ import {BrowserRouter, Routes, Route, Navigate, Link} from 'react-router-dom'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import Button from '@mui/material/Button'
+
+
 
 function App() {
   const [clients, setClients] = useState([])
@@ -105,10 +108,16 @@ const deleteProfile = (event) => {
 
 
     <h1>The Great Catsby</h1>
-
-        <Link to="/login" >Login</Link> |{" "}
-        <Link to="/signup" >Sign Up</Link>|{" "}
-        {isAuthenticated ? <Link to="/home">Home</Link> : ""}
+    
+        <Link to="/login" >
+        <Button variant="contained">Sign in</Button>
+          </Link> |{" "}
+        <Link  to="/signup" >
+        <Button variant="contained">Sign Up</Button>
+        </Link> |{" "}
+        {isAuthenticated ? <Link  to="/home">
+        <Button variant="contained">Home</Button>
+        </Link> : ""}
 
 
 

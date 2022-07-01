@@ -1,7 +1,11 @@
 import {React, useState,  useEffect}   from 'react'
 import {Navigate, Link} from 'react-router-dom'
 import { toast } from "react-toastify";
-
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import Input from '@mui/material/Input'
+import Container from '@mui/material/Container'
+import FormHelperText from '@mui/material/FormHelperText'
 const SignUp= ()=>{
 
     const [newClient, setNewClient] = useState({
@@ -56,28 +60,44 @@ const createProfile = async (e)=>{
 
     return(
         <>
-        <h1>Sign Up</h1>
-        <div className='form'>
-        { !isAuthenticated ? 
-     <form onSubmit = {createProfile}>
-      <label>First Name</label>
-      <input type='text' name= 'firstname' placeholder='First Name' onChange= {e=> handleChange(e)}/><br/>
-      <label>Last Name</label>
-      <input type='text' name= 'lastname' placeholder='Last Name' onChange= {e=> handleChange(e)}/><br/>
-      <label>Pets</label>
-      <input type='text' name= 'pets' placeholder='Pets' onChange= {e=> handleChange(e)}/><br/>
-      <label>Email</label>
-      <input type='text' name= 'email' placeholder='Email' onChange= {e=> handleChange(e)}/><br/>
-      <label>Password</label>
-      <input type='password' name= 'password' placeholder='Password' onChange= {e=> handleChange(e)}/><br/>
-      <label>Phone</label>
-      <input type='number' name= 'phone' placeholder='Phone' onChange= {e=> handleChange(e)}/><br/>
-      <input type= 'submit' value='Submit'/>
-    </form>  : <Navigate to="/login"/>}
+        <h1>Create an Account</h1>
+        
+  
+  
 
-    <Link to="/login">Login</Link>|{""}
-    <Link to="/">Main</Link>
-</div>
+        <Container className='form'>
+        { !isAuthenticated ? 
+        <form onSubmit = {createProfile}>
+        <FormControl sx={{marginTop: 20}}>
+     
+      {/* <InputLabel>First Name</InputLabel> */}
+      <Input sx={{width:500}} type='text' name= 'firstname' placeholder='First Name' onChange= {e=> handleChange(e)}/><br/>
+      {/* <InputLabel>Last Name</InputLabel> */}
+      <Input  type='text' name= 'lastname' placeholder='Last Name' onChange= {e=> handleChange(e)}/><br/>
+      {/* <InputLabel>Pets</InputLabel> */}
+      <Input  type='text' name= 'pets' placeholder='Pets' onChange= {e=> handleChange(e)}/><br/>
+      {/* <InputLabel>Email</InputLabel> */}
+      <Input  type='text' name= 'email' placeholder='Email' onChange= {e=> handleChange(e)}/><br/>
+      {/* <InputLabel>Password</InputLabel> */}
+      <Input  type='password' name= 'password' placeholder='Password' onChange= {e=> handleChange(e)}/><br/>
+      {/* <InputLabel>Phone</InputLabel> */}
+      <Input  type='number' name= 'phone' placeholder='Phone' onChange= {e=> handleChange(e)}/><br/>
+      <Button sx={{width:90}} variant="contained" type="submit" value = "Sign Up">Sign Up</Button>
+     
+    </FormControl>
+    </form>
+    : <Navigate to="/login"/>}
+       <FormHelperText ><h4>Already Have an Account? Please Log in</h4>
+    <Link to="/login">
+    <Button variant="contained">Sign In</Button>
+    </Link>
+    </FormHelperText>
+    <FormHelperText ><h4>Or Go back to the Main Page</h4>
+    <Link to="/">
+    <Button variant="contained"> Main Page </Button>
+    </Link>
+    </FormHelperText>
+</Container>
         </>
     )
 }
