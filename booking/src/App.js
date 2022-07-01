@@ -116,7 +116,7 @@ function App() {
         <Button variant="contained">Sign Up</Button>
         </Link> |{" "}
         {isAuthenticated ? <Link  to="/home">
-        <Button variant="contained">Home</Button>
+        <Button variant="contained">Your Account</Button>
         </Link> : ""}
 
 
