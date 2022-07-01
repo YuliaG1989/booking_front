@@ -8,9 +8,7 @@ const Home = ()=>{
 
 
 const [currentClient, setCurrentClient]= useState()
-   
-
-    const [isAuthenticated, setIsAuthenticated] = useState(true)
+const [isAuthenticated, setIsAuthenticated] = useState(true)
   
  // ___FETCH CLIENTS
     const getCurrentClient = async () => {
@@ -29,12 +27,9 @@ const [currentClient, setCurrentClient]= useState()
     };
 
     //____LOGOUT
-    const Logout = (e) => {
-
-      e.preventDefault();
-  
-      localStorage.removeItem("token");
-      
+    const Logout = () => {
+      setIsAuthenticated(false) 
+      localStorage.removeItem("token")
     };
 
   useEffect(() => {
@@ -45,11 +40,8 @@ const [currentClient, setCurrentClient]= useState()
         <>
         <h1>Home</h1>
         <h1>Welcome, {currentClient}  </h1>
-           
-
-         
-       
-        <button onClick={Logout}>LogOut</button>
+       <button onClick={Logout}> LogOut</button>
+       {!isAuthenticated ? <Navigate to="/"/>: null}
         <Link to="/">Main</Link>
         
         </>

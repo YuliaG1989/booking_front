@@ -19,6 +19,25 @@ function App() {
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
   }
+  const checkAuthenticated = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/verify", {
+        method: "GET",
+        headers: { token: localStorage.token }
+      });
+
+      const parseRes = await res.json();
+
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    checkAuthenticated();
+  }, []);
+
 // ___FETCH CLIENTS
 const getClients = () =>{
   axios.get("http://localhost:5000").then(response =>{
@@ -87,10 +106,10 @@ const deleteProfile = (event) => {
 
     <h1>The Great Catsby</h1>
 
-        <Link to="/login">Login</Link> |{" "}
+        <Link to="/login" >Login</Link> |{" "}
         <Link to="/signup" >Sign Up</Link>|{" "}
-        <Link to="/home">Home</Link>
- 
+        {isAuthenticated ? <Link to="/home">Home</Link> : ""}
+
 
 
 {/* <div className='form'>
