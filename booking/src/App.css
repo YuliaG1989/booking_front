@@ -60,3 +60,11 @@ input{
 .link{
   text-decoration: none;
 }
+
+li{
+  list-style-type: none;
+}
+
+.welcome{
+  text-align: center;
+}

@@ -6,7 +6,51 @@ import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import Input from '@mui/material/Input'
+import Container from '@mui/material/Container'
+import FormHelperText from '@mui/material/FormHelperText'
+import Avatar from '@mui/material/Avatar';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <a color="inherit" href="#">
+        The Great Catsby.
+      </a>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const theme = createTheme(
+  {
+    palette: {
+      primary: {
+        main: '#00897b',
+      },
+      secondary: {
+        main: '#ffffff',
+      },
+    },
+  }
+)
 
 
 function App() {
@@ -106,71 +150,123 @@ function App() {
   return (
     <>
 
-
-    <h1>The Great Catsby</h1>
     
-        <Link to="/login" >
+        {/* <Link class='link' to="/login" >
         <Button variant="contained">Sign in</Button>
           </Link> |{" "}
-        <Link  to="/signup" >
+        <Link class='link' to="/signup" >
         <Button variant="contained">Sign Up</Button>
-        </Link> |{" "}
-        {isAuthenticated ? <Link  to="/home">
+        </Link > |{" "}
+        {isAuthenticated ? <Link class='link'  to="/home">
         <Button variant="contained">Your Account</Button>
-        </Link> : ""}
+        </Link> : ""} */}
 
-
-
-{/* <div className='form'>
-     <form onSubmit = {createProfile}>
-      <label>First Name</label>
-      <input type='text' placeholder='First Name' onChange= {e=> setFirstName(e.target.value)}/><br/>
-      <label>Last Name</label>
-      <input type='text' placeholder='Last Name' onChange= {e=> setLastName(e.target.value)}/><br/>
-      <label>Pets</label>
-      <input type='text' placeholder='Pets' onChange= {e=> setPets(e.target.value)}/><br/>
-      <label>Email</label>
-      <input type='text' placeholder='Email' onChange= {e=> setEmail(e.target.value)}/><br/>
-      <label>Password</label>
-      <input type='text' placeholder='Password' onChange= {e=> setPassword(e.target.value)}/><br/>
-      <label>Phone</label>
-      <input type='number' placeholder='Phone' onChange= {e=> setPhone(e.target.value)}/><br/>
-      <input type= 'submit' value='Submit'/>
-    </form>
-</div> */}
-
-    {/* {clients.map((getOne) =>{
-      return(
-        <div className='clients' key={getOne.id}>
+        <ThemeProvider theme={theme}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar position="absolute" >
+          <Toolbar sx={{
+            display: { xs: "flex" },
+            flexDirection: "row",
         
-        <h2> Name: {getOne.firstname}</h2>
-        <h2> Last name: {getOne.lastname}</h2>
-        <h2> Pets: {getOne.pets}</h2>
-        <h2> Email: {getOne.email}</h2>
-        <h2> Phone: {getOne.phone}</h2>
-        <details>
-          <summary>Update</summary>
-          <form onSubmit = {updateProfile} id={getOne.id}>
-      <label>First Name</label>
-      <input type='text' placeholder='First Name' onChange= {e=> setFirstName(e.target.value)}/><br/>
-      <label>Last Name</label>
-      <input type='text' placeholder='Last Name' onChange= {e=> setLastName(e.target.value)}/><br/>
-      <label>Pets</label>
-      <input type='text' placeholder='Pets' onChange= {e=> setPets(e.target.value)}/><br/>
-      <label>Email</label>
-      <input type='text' placeholder='Email' onChange= {e=> setEmail(e.target.value)}/><br/>
-      <label>Password</label>
-      <input type='text' placeholder='Password' onChange= {e=> setPassword(e.target.value)}/><br/>
-      <label>Phone</label>
-      <input type='number' placeholder='Phone' onChange= {e=> setPhone(e.target.value)}/><br/>
-      <input type= 'submit' value='Submit'/>
-    </form>
-<button onClick={deleteProfile} value={getOne.id}>DELETE</button>
-        </details>
-        </div>
+            justifyContent: "space-between"
+          }}>
+            <Toolbar>
+            <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow:0.5 }}>
+             <h1>The Great Catsby.</h1>
+            </Typography>
+            </Toolbar>
+            <Toolbar>
+            <Link class='link' to="/login" >
+         <Button variant="contained" >Sign in</Button>
+          </Link> 
+        <Link class='link' to="/signup" >
+        <Button variant="contained">Sign Up</Button>
+        </Link > 
+        {isAuthenticated ? <Link class='link'  to="/home">
+        <Button variant="contained">Go to Your Account</Button>
+        </Link> : ""}
+        </Toolbar>
+          </Toolbar>
+        </AppBar>
+       
+          {/* <Toolbar
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              px: [1],
+            }}
+          >
+            <IconButton >
+            
+            </IconButton>
+          </Toolbar> */}
+          {/* <Divider />
+          <List component="nav">
+            
+            <Divider sx={{ my: 1 }} />
+            
+          </List> */}
+      
+        <Box
+          component="main"
+          sx={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)',
+          
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
+          }}
+        >
+          <Toolbar />
+          <Container>
+            <Grid container spacing={3}>
+             
+              <Grid item xs={12}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '70vh',
+                    marginTop: 10,
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                  }}
+                >
+                
+                </Paper>
+              </Grid>
+              {/* Recent Deposits */}
+              {/* <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                    opacity: 0.2,
+                  }}
+                >
+           
+                </Paper>
+              </Grid> */}
+             
+              <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+                <Copyright color='primary' sx={{ pt: 4 }} />
+                </Paper>
+              </Grid>
+            </Grid>
+          
+          </Container>
+        </Box>
+      </Box>
+    </ThemeProvider>
 
-      )
-    })} */}
+
+
+
 
     </>
   );
