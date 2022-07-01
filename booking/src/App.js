@@ -10,13 +10,13 @@ import Button from '@mui/material/Button'
 
 
 function App() {
-  const [clients, setClients] = useState([])
-  const [firstname, setFirstName] = useState()
-  const [lastname, setLastName] = useState()
-  const [pets, setPets] = useState([])
-  const[email, setEmail] = useState()
-  const[password, setPassword] = useState()
-  const [phone, setPhone] = useState()
+  // const [clients, setClients] = useState([])
+  // const [firstname, setFirstName] = useState()
+  // const [lastname, setLastName] = useState()
+  // const [pets, setPets] = useState([])
+  // const[email, setEmail] = useState()
+  // const[password, setPassword] = useState()
+  // const [phone, setPhone] = useState()
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const setAuth = boolean => {
@@ -42,15 +42,15 @@ function App() {
   }, []);
 
 // ___FETCH CLIENTS
-const getClients = () =>{
-  axios.get("http://localhost:5000").then(response =>{
-    setClients(response.data)
-  })
-} 
+// const getClients = () =>{
+//   axios.get("http://localhost:5000").then(response =>{
+//     setClients(response.data)
+//   })
+// } 
 
-useEffect(() => {
-  getClients();
-}, []);
+// useEffect(() => {
+//   getClients();
+// }, []);
 
 
 //___CREATE PROFILE
@@ -74,35 +74,35 @@ useEffect(() => {
 // }
 
 // ____UPDATE PROFILE
- const updateProfile = (event) => {
-  event.preventDefault();
+//  const updateProfile = (event) => {
+//   event.preventDefault();
   
-  axios.put( "http://localhost:5000/" + event.target.id,
-         {
-    firstname: firstname,
-    lastname: lastname,
-    pets: pets,
-    phone: phone ,
-    email: email, 
-    password: password
-         }).then(
-      (response) => {
-          setClients(response.data)
-      }
-  )
-}
+//   axios.put( "http://localhost:5000/" + event.target.id,
+//          {
+//     firstname: firstname,
+//     lastname: lastname,
+//     pets: pets,
+//     phone: phone ,
+//     email: email, 
+//     password: password
+//          }).then(
+//       (response) => {
+//           setClients(response.data)
+//       }
+//   )
+// }
 // ____DELETE PROFILE
 
-const deleteProfile = (event) => {
-  axios.delete("http://localhost:5000/" + event.target.value).then(
-      (response) => {
-          setClients(
-             response.data
-          )
-      }
-  )
+// const deleteProfile = (event) => {
+//   axios.delete("http://localhost:5000/" + event.target.value).then(
+//       (response) => {
+//           setClients(
+//              response.data
+//           )
+//       }
+//   )
 
-}
+// }
   return (
     <>
 
@@ -139,7 +139,7 @@ const deleteProfile = (event) => {
     </form>
 </div> */}
 
-    {clients.map((getOne) =>{
+    {/* {clients.map((getOne) =>{
       return(
         <div className='clients' key={getOne.id}>
         
@@ -170,7 +170,7 @@ const deleteProfile = (event) => {
         </div>
 
       )
-    })}
+    })} */}
 
     </>
   );
