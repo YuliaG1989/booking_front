@@ -229,13 +229,15 @@ function App() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '70vh',
+                    height: '90vh',
                     marginTop: 10,
                     backgroundColor: 'rgba(255, 255, 255, 0.2)'
                   }}
                 >
                 
-                </Paper>
+
+            </Paper>
+              
               </Grid>
               {/* Recent Deposits */}
               {/* <Grid item xs={12} md={4} lg={3}>

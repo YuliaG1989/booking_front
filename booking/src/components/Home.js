@@ -185,17 +185,46 @@ const deleteProfile = (event) => {
           <Container sx={{ mt: 4, mb: 4 }}>
             <Grid sx={{marginTop:10}} container spacing={3}>
              
-              <Grid  item xs={12} md={8} lg={9}>
+              <Grid  item xs={12} md={6} lg={6}>
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '70vh',
+                    height: '90vh',
                     backgroundColor: 'rgba(255, 255, 255, 0.2)'
                   }}
                 >
-                   {clients.map((getOne) =>{
+                             <iframe id="appointy-iframe" class="no-border" src="https://booking.appointy.com/catsby?isgadget=1&autoheight=1"  scrolling="no" width="100%" frameBorder="0"></iframe>
+<script>
+   { (function() {
+        const ifrm = document.getElementById("appointy-iframe");
+        window.addEventListener("message", function (e) {
+            const d = e.data || {};
+            if (d.type === "height"){
+                ifrm.style.height = d.data + "px";
+            }
+            if (d.type === "scroll") {
+                ifrm.scrollIntoView();
+            }
+        });
+    })()}
+</script>
+   
+                </Paper>
+              </Grid>
+              {/* Recent Deposits */}
+              <Grid item xs={12} md={6} lg={6}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '45vh',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                  }}
+                >
+                                    {clients.map((getOne) =>{
         if(getOne.id === currentClientID){
       return(
         
@@ -232,24 +261,10 @@ const deleteProfile = (event) => {
     })}
                 </Paper>
               </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)'
-                  }}
-                >
-           
-                </Paper>
-              </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', backgroundColor:'rgba(255, 255, 255, 0.2)' }}>
-                <Copyright sx={{ pt: 4,  }} />
+                <Copyright sx={{ pt: 4  }} />
                 </Paper>
               </Grid>
             </Grid>
