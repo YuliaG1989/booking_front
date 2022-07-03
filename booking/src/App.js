@@ -25,6 +25,9 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
+import { useLocation } from 'react-router-dom'
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem'
 
 function Copyright() {
   return (
@@ -85,37 +88,9 @@ function App() {
     checkAuthenticated();
   }, []);
 
-// ___FETCH CLIENTS
-// const getClients = () =>{
-//   axios.get("http://localhost:5000").then(response =>{
-//     setClients(response.data)
-//   })
-// } 
-
-// useEffect(() => {
-//   getClients();
-// }, []);
-
 
 //___CREATE PROFILE
 
-// const createProfile = (event)=>{
-//   event.preventDefault();
-//   axios.post("http://localhost:5000/",{
-//         firstname: firstname,
-//         lastname: lastname,
-//         pets: pets,
-//         phone: phone,
-//         email: email, 
-//         password: password
-
-//   } ).then(
-//     (response) => {
-//         setClients(response.data
-//         )
-//     }
-// )
-// }
 
 // ____UPDATE PROFILE
 //  const updateProfile = (event) => {
@@ -147,20 +122,13 @@ function App() {
 //   )
 
 // }
+
+const location = useLocation()
+const from = location.state?.items
+console.log(from)
   return (
     <>
-
-    
-        {/* <Link class='link' to="/login" >
-        <Button variant="contained">Sign in</Button>
-          </Link> |{" "}
-        <Link class='link' to="/signup" >
-        <Button variant="contained">Sign Up</Button>
-        </Link > |{" "}
-        {isAuthenticated ? <Link class='link'  to="/home">
-        <Button variant="contained">Your Account</Button>
-        </Link> : ""} */}
-
+ 
         <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -183,6 +151,9 @@ function App() {
         <Link class='link' to="/signup" >
         <Button variant="contained">Sign Up</Button>
         </Link > 
+        <Link class='link' to="/store" >
+        <Button variant="contained">Store</Button>
+        </Link > 
         {isAuthenticated ? <Link class='link'  to="/home">
         <Button variant="contained">Go to Your Account</Button>
         </Link> : ""}
@@ -190,24 +161,6 @@ function App() {
           </Toolbar>
         </AppBar>
        
-          {/* <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton >
-            
-            </IconButton>
-          </Toolbar> */}
-          {/* <Divider />
-          <List component="nav">
-            
-            <Divider sx={{ my: 1 }} />
-            
-          </List> */}
       
         <Box
           component="main"
@@ -220,48 +173,72 @@ function App() {
           }}
         >
           <Toolbar />
-          <Container>
-            <Grid container spacing={3}>
-             
-              <Grid item xs={12}>
-                <Paper
+            <Container>
+            
+
+              <Grid>
+                <Paper elevation={7}
                   sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '90vh',
+                  
+                    height: 'auto',
+                    width: '80vw',
                     marginTop: 10,
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
                   }}
                 >
-                
-
+                  <h1>Book a stay.</h1>
             </Paper>
               
-              </Grid>
-              {/* Recent Deposits */}
-              {/* <Grid item xs={12} md={4} lg={3}>
-                <Paper
+            <Paper elevation={7}
                   sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                    opacity: 0.2,
+                    
+                    height: 'auto',
+                    width: '80vw',
+                    marginTop: 10,
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
                   }}
                 >
-           
+                <h1>Schedule a Grooming Sesh.</h1>
+            </Paper>
+            
+                 
+            <Paper elevation={7}
+                  sx={{
+                    
+                    height: 'auto',
+                    width: '80vw',
+                    marginTop: 10,
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
+                  }}
+                >
+              <h1>Check out our Store.</h1>
+            {/* <Box>
+            <ImageList sx={{ width: '80vw', height: 450 }} variant="woven" cols={3} gap={8}>
+      {from.map((item) => (
+        <ImageListItem key={item.image}>
+          <img
+            src={`${item.image}?w=161&fit=crop&auto=format`}
+            srcSet={`${item.image}?w=161&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.product}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+    </Box> */}
+    </Paper>
+    </Grid>
+  );
+
+              {/* <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+                
                 </Paper>
               </Grid> */}
-             
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
-                <Copyright color='primary' sx={{ pt: 4 }} />
-                </Paper>
-              </Grid>
-            </Grid>
-          
+           
           </Container>
+          
+          <Copyright color='primary' sx={{ pt: 4 }} />
         </Box>
       </Box>
     </ThemeProvider>

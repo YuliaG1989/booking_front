@@ -8,7 +8,7 @@ import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import { useState } from 'react';
-
+import Store from './components/Store'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,9 +19,10 @@ root.render(
   
   <Routes>
     <Route path="/" element={<App />} />
-    <Route exact path="/login" element={<Login />}/>
+    <Route exact path="/login" element={<Login />} state={ <Store/> }/>
     <Route exact path="/signup" element={<SignUp/>}/>
     <Route exact path="/home" element={<Home />}/>
+    <Route exact path="/store" element={<Store />}/>
   </Routes>
 </BrowserRouter>
 );
