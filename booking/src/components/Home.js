@@ -306,11 +306,12 @@ const list = (anchor) => (
           </Drawer>
           </>
       ))}
+                <Button variant="contained" onClick={handleOpen}>Cart({cart.length})</Button>
                 <Link class='link' to="/" >
                   <Button variant="contained"> Main Page </Button>
                 </Link>
                 <Button variant="contained" onClick={Logout}> LogOut</Button>
-                <Button variant="contained" onClick={handleOpen}>Cart({cart.length})</Button>
+               
                 <Modal
                   open={open}
                   onClose={handleClose}
