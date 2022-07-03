@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import Input from '@mui/material/Input'
@@ -28,8 +28,15 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 
 const Store = () => {
     const [items, setItems] = useState([])
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([
+        {image: '',
+        product:'',
+        price: '',
+        quantity:''
 
+        }])
+    // const location = useLocation()
+    // const cart = location.state?.cart
 
     const getItems = () => {
         axios.get("http://localhost:5000/store").then(response => {
@@ -110,11 +117,11 @@ const Store = () => {
                                 <Link class='link' to="/signup" >
                                     <Button variant="contained">Sign Up</Button>
                                 </Link >
-                                <Link class='link' to="/" state={{ items: items }} >
+                                <Link class='link' to="/" >
                                     <Button variant="contained">Main</Button>
                                 </Link >
                                 
-                                <Link class='link' to="/home" state={{ cart: cart }}>
+                                <Link class='link' to="/home" >
                                     <Button variant="contained">Go to Your Account</Button>
                                 </Link>
                                 <Badge>Cart({cart.length})</Badge>
@@ -190,7 +197,7 @@ const Store = () => {
                                         )
                                     })}
                                     </Grid>
-                                    {/* <Button onClick={removeFromCart}>Remove</Button> */}
+                                    <Button onClick={removeFromCart}>Remove</Button>
                                     <h3>Total : {getTotalSum()} $</h3>
                                     <button onClick={() => setCart([])}>Clear</button>
                                 </div>

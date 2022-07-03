@@ -41,10 +41,10 @@ const theme = createTheme(
   {
     palette: {
       primary: {
-        main: '#00897b',
+        main: '#ffffff',
       },
       secondary: {
-        main: '#ffffff',
+        main: '#00897b',
       },
     },
   }
@@ -143,8 +143,7 @@ const Home = () => {
   }
 
   const location = useLocation()
-  const propsCart = location.state?.cart
-
+ 
 
   return (
     <>
@@ -169,7 +168,7 @@ const Home = () => {
                   <Button variant="contained"> Main Page </Button>
                 </Link>
                 <Button variant="contained" onClick={Logout}> LogOut</Button>
-                <Badge>Cart({propsCart.length})</Badge> 
+                <Badge>Cart()</Badge> 
                 {!isAuthenticated ? <Navigate to="/" /> : null}
 
 

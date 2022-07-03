@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route, Navigate, Link} from 'react-router-dom'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import Store from './components/Store'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import Input from '@mui/material/Input'
@@ -28,6 +29,7 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import { useLocation } from 'react-router-dom'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem'
+import { createRoot } from 'react-dom/client';
 
 function Copyright() {
   return (
@@ -64,7 +66,7 @@ function App() {
   // const[email, setEmail] = useState()
   // const[password, setPassword] = useState()
   // const [phone, setPhone] = useState()
-
+  const [cart, setCart] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
@@ -130,6 +132,7 @@ console.log(from)
     <>
  
         <ThemeProvider theme={theme}>
+      
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" >

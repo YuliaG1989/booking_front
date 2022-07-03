@@ -19,9 +19,9 @@ root.render(
   
   <Routes>
     <Route path="/" element={<App />} />
-    <Route exact path="/login" element={<Login />} state={ <Store/> }/>
+    <Route exact path="/login" element={<Login />} />
     <Route exact path="/signup" element={<SignUp/>}/>
-    <Route exact path="/home" element={<Home />}/>
+    <Route exact path="/home" element={<Home />} />
     <Route exact path="/store" element={<Store />}/>
   </Routes>
 </BrowserRouter>
