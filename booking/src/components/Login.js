@@ -179,33 +179,13 @@ const Login = () => {
             <Copyright sx={{ mt: 5 }} />
           </Grid>
         </Grid>
+        <footer>
+          <Copyright color='primary' sx={{ pt: 4 }} />
+          </footer>
       </ThemeProvider>
 
 
-      {/* <Container className='form'>
-
-        { !isAuthenticated ? 
-        
-        <form onSubmit ={onSubmitForm} >
-            <FormControl sx={{marginTop: 20}}>
-            <Input sx={{width:400}} type="text" name = 'email' placeholder="Email" onChange={e=>onChange(e)}/><br/>
-          
-            <Input sx={{width:400}} type="password" name = 'password' placeholder="Password" onChange={e=>onChange(e)}/><br/>
-            <Button sx={{width:90}} variant="contained" type="submit" value = "Login">Sign In</Button>
-            </FormControl>
-        </form>
-        : <Navigate to="/home"/>}
-        <FormHelperText ><h4>Don't Have an Account? Create One</h4>
-        <Link to="/signup">
-        <Button variant="contained"> Sign Up </Button>
-        </Link>
-        </FormHelperText>
-        <FormHelperText ><h4>Or Go back to the Main Page</h4>
-        <Link to="/">
-        <Button variant="contained"> Main Page </Button>
-        </Link>
-        </FormHelperText>
-        </Container> */}
+      
     </>
   )
 }

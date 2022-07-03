@@ -19,10 +19,10 @@ root.render(
   
   <Routes>
     <Route path="/" element={<App />} />
-    <Route exact path="/login" element={<Login />} />
+    <Route exact path="/login" element={<Login />}  />
     <Route exact path="/signup" element={<SignUp/>}/>
     <Route exact path="/home" element={<Home />} />
-    <Route exact path="/store" element={<Store />}/>
+    {/* <Route exact path="/store" element={<Store />}/> */}
   </Routes>
 </BrowserRouter>
 );

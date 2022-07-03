@@ -41,11 +41,11 @@ h1 {
 text-align: center;
 }
 
-.clients{
+/* .clients{
   margin-left: 100px;
   margin-bottom: 50px;
   border-bottom: 5px solid pink;
-}
+} */
 
 /* .form{
   text-align: center;
@@ -70,7 +70,7 @@ li{
 }
 
 img{
-  width: 500px;
+  width: 300px;
 }
 .cartImg{
   width: 50px;

@@ -98,36 +98,38 @@ const Store = () => {
             <ThemeProvider theme={theme}>
                 <Box sx={{ display: 'flex' }}>
                     <CssBaseline />
-                    <AppBar position="absolute" >
+                    {/* <AppBar position="absolute" >
                         <Toolbar sx={{
                             display: { xs: "flex" },
                             flexDirection: "row",
 
                             justifyContent: "space-between"
-                        }}>
-                            <Toolbar>
+                        }}> */}
+                            {/* <Toolbar>
                                 <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 0.5 }}>
                                     <h1>The Great Catsby.</h1>
                                 </Typography>
                             </Toolbar>
                             <Toolbar>
-                                <Link class='link' to="/login" >
+                                <Link class='link' to="/login" state={{cart: cart}} >
                                     <Button variant="contained" >Sign in</Button>
                                 </Link>
-                                <Link class='link' to="/signup" >
+                                <Link class='link' to="/signup" state={{cart: cart}} >
                                     <Button variant="contained">Sign Up</Button>
                                 </Link >
-                                <Link class='link' to="/" >
+                                <Link class='link' to="/" state={{cart: cart}} >
                                     <Button variant="contained">Main</Button>
-                                </Link >
+                                </Link > */}
                                 
-                                <Link class='link' to="/home" >
+                                {/* <Link class='link' to="/home" >
                                     <Button variant="contained">Go to Your Account</Button>
+                                </Link> */}
+                                {/* <Link class='link' to="/home" state={{cart: cart}} >
+                                <Button variant="contained">Cart({cart.length})</Button>
                                 </Link>
-                                <Badge>Cart({cart.length})</Badge>
                             </Toolbar>
                         </Toolbar>
-                    </AppBar>
+                    </AppBar> */}
 
 
                     <Box
@@ -165,7 +167,7 @@ const Store = () => {
                                 )
                             })}
                             </Grid>
-                            <Paper
+                            {/* <Paper
                                 sx={{
                                     p: 2,
                                     display: 'flex',
@@ -202,7 +204,7 @@ const Store = () => {
                                     <button onClick={() => setCart([])}>Clear</button>
                                 </div>
 
-                            </Paper>
+                            </Paper> */}
 
                         </Container>
                     </Box>

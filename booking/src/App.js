@@ -58,6 +58,7 @@ const theme = createTheme(
 )
 
 
+
 function App() {
   // const [clients, setClients] = useState([])
   // const [firstname, setFirstName] = useState()
@@ -66,7 +67,7 @@ function App() {
   // const[email, setEmail] = useState()
   // const[password, setPassword] = useState()
   // const [phone, setPhone] = useState()
-  const [cart, setCart] = useState([])
+
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
@@ -125,9 +126,6 @@ function App() {
 
 // }
 
-const location = useLocation()
-const from = location.state?.items
-console.log(from)
   return (
     <>
  
@@ -154,11 +152,9 @@ console.log(from)
         <Link class='link' to="/signup" >
         <Button variant="contained">Sign Up</Button>
         </Link > 
-        <Link class='link' to="/store" >
-        <Button variant="contained">Store</Button>
-        </Link > 
-        {isAuthenticated ? <Link class='link'  to="/home">
-        <Button variant="contained">Go to Your Account</Button>
+       
+        {isAuthenticated ? <Link class='link'  to="/home" >
+        <Button variant="contained"> Your Account</Button>
         </Link> : ""}
         </Toolbar>
           </Toolbar>
@@ -176,7 +172,7 @@ console.log(from)
           }}
         >
           <Toolbar />
-            <Container>
+              <Container> 
             
 
               <Grid>
@@ -189,61 +185,36 @@ console.log(from)
                     backgroundColor: 'rgba(255, 255, 255, 0.5)'
                   }}
                 >
-                  <h1>Book a stay.</h1>
+                  <h1>Book a stay!</h1>
+                  <h1>Schedule Grooming Sesh!</h1>
+                  <h1>There's also a little store!</h1>
+                  <Link class='link' to="/login" >
+         {/* <Button variant="contained" >Sign in</Button> */}
+                  <h1> Sign in to check it out!</h1>
+                  </Link>
+                  <Link class='link' to="/signup" >
+                    <h1> Sign up if you don't have an account!</h1>
+                  </Link>  
             </Paper>
               
-            <Paper elevation={7}
-                  sx={{
-                    
-                    height: 'auto',
-                    width: '80vw',
-                    marginTop: 10,
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
-                  }}
-                >
-                <h1>Schedule a Grooming Sesh.</h1>
-            </Paper>
             
-                 
-            <Paper elevation={7}
-                  sx={{
-                    
-                    height: 'auto',
-                    width: '80vw',
-                    marginTop: 10,
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
-                  }}
-                >
-              <h1>Check out our Store.</h1>
-            {/* <Box>
-            <ImageList sx={{ width: '80vw', height: 450 }} variant="woven" cols={3} gap={8}>
-      {from.map((item) => (
-        <ImageListItem key={item.image}>
-          <img
-            src={`${item.image}?w=161&fit=crop&auto=format`}
-            srcSet={`${item.image}?w=161&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.product}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
-    </Box> */}
-    </Paper>
+        
+   
     </Grid>
-  );
+  
 
               {/* <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
                 
                 </Paper>
               </Grid> */}
-           
-          </Container>
-          
-          <Copyright color='primary' sx={{ pt: 4 }} />
+        </Container>
+        
         </Box>
       </Box>
+      <footer>
+          <Copyright color='primary' sx={{ pt: 4 }} />
+          </footer>
     </ThemeProvider>
 
 
