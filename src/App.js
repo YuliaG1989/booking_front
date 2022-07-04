@@ -128,16 +128,12 @@ function App() {
 
   return (
     <>
+   
+ {/* <Route exact path="/store" element={<Store />}/> */}
+
  
         <ThemeProvider theme={theme}>
-        <Routes>
- 
-    {/* <Route path="/" element={<App />} /> */}
-    <Route exact path="/login" element={<Login />}  />
-    <Route exact path="/signup" element={<SignUp/>}/>
-    <Route exact path="/home" element={<Home />} />
-    {/* <Route exact path="/store" element={<Store />}/> */}
-  </Routes>
+      
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" >
@@ -226,7 +222,7 @@ function App() {
 
 
 
-
+    
 
     </>
   );
