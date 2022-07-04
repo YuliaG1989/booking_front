@@ -74,7 +74,7 @@ function App() {
   }
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("https://thegreatcat.herokuapp.com/verify", {
+      const res = await fetch("http://localhost:5000/verify", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -130,7 +130,14 @@ function App() {
     <>
  
         <ThemeProvider theme={theme}>
-      
+        <Routes>
+ 
+    {/* <Route path="/" element={<App />} /> */}
+    <Route exact path="/login" element={<Login />}  />
+    <Route exact path="/signup" element={<SignUp/>}/>
+    <Route exact path="/home" element={<Home />} />
+    {/* <Route exact path="/store" element={<Store />}/> */}
+  </Routes>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" >
