@@ -25,8 +25,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import Store from './Store'
-import Side from './Side.js'
-import { Slide } from 'react-toastify';
 import Modal from '@mui/material/Modal'
 
 
@@ -128,7 +126,7 @@ const Home = () => {
   // ___FETCH CLIENTS
   const getCurrentClient = async () => {
     try {
-      const res = await fetch("http://localhost:5000/home/", {
+      const res = await fetch("https://thegreatcat.herokuapp.com/home/", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -155,7 +153,7 @@ const Home = () => {
 
 
   const getClients = () => {
-    axios.get("http://localhost:5000").then(response => {
+    axios.get("https://thegreatcat.herokuapp.com/").then(response => {
       setClients(response.data)
     })
   }
@@ -168,7 +166,7 @@ const Home = () => {
   const updateProfile = (event) => {
     event.preventDefault();
 
-    axios.put("http://localhost:5000/" + event.target.id,
+    axios.put("https://thegreatcat.herokuapp.com/" + event.target.id,
       {
         firstname: firstname,
         lastname: lastname,
@@ -185,7 +183,7 @@ const Home = () => {
   // ____DELETE PROFILE
 
   const deleteProfile = (event) => {
-    axios.delete("http://localhost:5000/" + event.target.value).then(
+    axios.delete("https://thegreatcat.herokuapp.com/" + event.target.value).then(
       (response) => {
         setClients(
           response.data
@@ -195,7 +193,7 @@ const Home = () => {
 
   }
   const getItems = () => {
-    axios.get("http://localhost:5000/store").then(response => {
+    axios.get("https://thegreatcat.herokuapp.com/store").then(response => {
         setItems(response.data)
     })
 }
