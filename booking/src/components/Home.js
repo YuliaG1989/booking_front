@@ -126,7 +126,7 @@ const Home = () => {
   // ___FETCH CLIENTS
   const getCurrentClient = async () => {
     try {
-      const res = await fetch("https://thegreatcat.herokuapp.com/home/", {
+      const res = await fetch("http://localhost:5000/home/", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -153,7 +153,7 @@ const Home = () => {
 
 
   const getClients = () => {
-    axios.get("https://thegreatcat.herokuapp.com/").then(response => {
+    axios.get("http://localhost:5000").then(response => {
       setClients(response.data)
     })
   }
@@ -166,7 +166,7 @@ const Home = () => {
   const updateProfile = (event) => {
     event.preventDefault();
 
-    axios.put("https://thegreatcat.herokuapp.com/" + event.target.id,
+    axios.put("http://localhost:5000/" + event.target.id,
       {
         firstname: firstname,
         lastname: lastname,
@@ -183,7 +183,7 @@ const Home = () => {
   // ____DELETE PROFILE
 
   const deleteProfile = (event) => {
-    axios.delete("https://thegreatcat.herokuapp.com/" + event.target.value).then(
+    axios.delete("http://localhost:5000/" + event.target.value).then(
       (response) => {
         setClients(
           response.data
@@ -193,7 +193,7 @@ const Home = () => {
 
   }
   const getItems = () => {
-    axios.get("https://thegreatcat.herokuapp.com/").then(response => {
+    axios.get("http://localhost:5000/store").then(response => {
         setItems(response.data)
     })
 }
