@@ -72,7 +72,7 @@ const SignUp = () => {
     try {
       const body = { firstname, lastname, pets, phone, email, password }
       const response = await fetch(
-        "http://localhost:5000/signup",
+        "https://thegreatcat.herokuapp.com/signup",
         {
           method: "POST",
           headers: {
