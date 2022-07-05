@@ -8,7 +8,7 @@ import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import { useState } from 'react';
-import Store from './components/Store'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

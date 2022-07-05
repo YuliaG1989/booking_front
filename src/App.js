@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
-import Store from './components/Store'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import Input from '@mui/material/Input'
@@ -21,19 +20,11 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import { useLocation } from 'react-router-dom'
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem'
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { height } from '@mui/system';
 
 function Copyright() {
   return (
@@ -64,21 +55,12 @@ const theme = createTheme(
 
 
 function App() {
-  // const [clients, setClients] = useState([])
-  // const [firstname, setFirstName] = useState()
-  // const [lastname, setLastName] = useState()
-  // const [pets, setPets] = useState([])
-  // const[email, setEmail] = useState()
-  // const[password, setPassword] = useState()
-  // const [phone, setPhone] = useState()
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const setAuth = boolean => {
-    setIsAuthenticated(boolean);
-  }
+
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:5000/verify", {
+      const res = await fetch("https://thegreatcat.herokuapp.com/verify", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -96,45 +78,8 @@ function App() {
   }, []);
 
 
-  //___CREATE PROFILE
-
-
-  // ____UPDATE PROFILE
-  //  const updateProfile = (event) => {
-  //   event.preventDefault();
-
-  //   axios.put( "http://localhost:5000/" + event.target.id,
-  //          {
-  //     firstname: firstname,
-  //     lastname: lastname,
-  //     pets: pets,
-  //     phone: phone ,
-  //     email: email, 
-  //     password: password
-  //          }).then(
-  //       (response) => {
-  //           setClients(response.data)
-  //       }
-  //   )
-  // }
-  // ____DELETE PROFILE
-
-  // const deleteProfile = (event) => {
-  //   axios.delete("http://localhost:5000/" + event.target.value).then(
-  //       (response) => {
-  //           setClients(
-  //              response.data
-  //           )
-  //       }
-  //   )
-
-  // }
-
   return (
     <>
-
-      {/* <Route exact path="/store" element={<Store />}/> */}
-
 
       <ThemeProvider theme={theme}>
 
@@ -160,7 +105,7 @@ function App() {
                   <Button variant="contained">Sign Up</Button>
                 </Link >
 
-                {isAuthenticated ? <Link class='link' to="/home" >
+                {isAuthenticated ? <Link class='link' to="/home"> 
                   <Button variant="contained"> Your Account</Button>
                 </Link> : ""}
               </Toolbar>
@@ -178,13 +123,16 @@ function App() {
             }}
           >
             <Toolbar />
-            <Container>
-
+           
+            <Container sx={{marginTop: '100px'}}>
+            <h2><i>No more cages, kennels, growls, or yowls. 
+            Cats deserve quality, in-home care and that's why we've created a nationwide network of trusted and insured cat sitters 
+            who can bring the purrfect hospitality to you!</i></h2>
+            </Container>
               <Paper elevation={7}
                 sx={{
-
-
-                  width: '80vw',
+                  height: 300,
+                  width: '100vw',
                   marginTop: 10,
                   backgroundColor: 'rgba(255, 255, 255, 0.5)'
                 }}
@@ -216,7 +164,7 @@ function App() {
                     <CardMedia
                       component="img"
                       height="140"
-                      image='https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
+                      image='https://images.unsplash.com/photo-1602924097911-a78ca1af38c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1133&q=80'
                       alt="cat"
                     />
                     <CardContent>
@@ -237,7 +185,7 @@ function App() {
                     <CardMedia
                       component="img"
                       height="140"
-                      image='https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
+                      image='https://images.unsplash.com/photo-1565190462842-d57a3e05de48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=723&q=80'
                       alt="cat"
                     />
                     <CardContent>
@@ -258,7 +206,7 @@ function App() {
                     <CardMedia
                       component="img"
                       height="140"
-                      image='https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
+                      image='https://images.unsplash.com/photo-1609533440656-68c27fc2862d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1076&q=80'
                       alt="cat"
                     />
                     <CardContent>
@@ -278,7 +226,6 @@ function App() {
 
               </Paper>
 
-            </Container>
 
             <Grid item xs={12}>
               <Paper sx={{
