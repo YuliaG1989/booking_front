@@ -429,22 +429,22 @@ const list = (anchor) => (
                                 <li> <b>Phone:</b> <i>{getOne.phone}</i></li>
                               </ul>
                             </Typography>
-                          
-                              
-
-                             <form onSubmit={updateProfile} id={getOne.id}>
-                                <FormControl >                               
+                           
+                            <form onSubmit={updateProfile} id={getOne.id}>   
+                                <FormControl >
+                                                            
                                 <Input sx={{width:400}} type='text' placeholder='First Name' onChange={e => setFirstName(e.target.value)} /><br />
                                 <Input type='text' placeholder='Last Name' onChange={e => setLastName(e.target.value)} /><br />
                                 <Input type='text' placeholder='Pets' onChange={e => setPets(e.target.value)} /><br />
                                 <Input type='text' placeholder='Email' onChange={e => setEmail(e.target.value)} /><br />
                                 <Input type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} /><br />
                                 <Input type='number' placeholder='Phone' onChange={e => setPhone(e.target.value)} /><br />
-                                <Button variant="contained"  type='submit' value='Submit'/>
+                                <Button variant="contained"  type='submit' value='Submit'>Update</Button>
                                 <Button sx={{ marginTop: 2 }} variant="contained" onClick={deleteProfile} value={getOne.id}>Delete Profile</Button>
+                                
                                 </FormControl> 
                                 </form>
-
+                              
                             
                           </div>
 

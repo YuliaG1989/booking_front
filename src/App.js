@@ -29,7 +29,10 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import { useLocation } from 'react-router-dom'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem'
-import { createRoot } from 'react-dom/client';
+
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 function Copyright() {
   return (
@@ -167,7 +170,7 @@ function App() {
         <Box
           component="main"
           sx={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)',
+            // backgroundImage: 'url(https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)',
           
             flexGrow: 1,
             height: '100vh',
@@ -199,9 +202,75 @@ function App() {
                     <h1> Sign up if you don't have an account!</h1>
                   </Link>  
             </Paper>
-              
-            
-        
+
+                <Card sx={{ maxWidth: 345 }}>
+
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image='https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
+                    alt="cat"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Create a profile!
+                    </Typography>
+                   
+                  </CardContent>
+
+
+                  <Link class='link' to="/signup" >
+                    <Button size='small' color='primary'>Here</Button>
+                  </Link > 
+
+                </Card>
+                <Card sx={{ maxWidth: 345 }}>
+
+<CardMedia
+  component="img"
+  height="140"
+  image='https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
+  alt="cat"
+/>
+<CardContent>
+  <Typography gutterBottom variant="h5" component="div">
+    Login
+  </Typography>
+ 
+</CardContent>
+
+
+<Link class='link' to="/login" >
+  <Button size='small' color='primary'>Here</Button>
+</Link > 
+
+</Card>
+                <Card sx={{ maxWidth: 345 }}>
+
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Lizard
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Lizards are a widespread group of squamate reptiles, with over 6,000
+                      species, ranging across all continents except Antarctica
+                    </Typography>
+                  </CardContent>
+
+
+                  <Button size="small" color="primary">
+                    Share
+                  </Button>
+
+
+                </Card>
+
    
     </Grid>
   
