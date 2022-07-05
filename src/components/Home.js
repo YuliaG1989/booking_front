@@ -116,9 +116,9 @@ const Home = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [phone, setPhone] = useState()
-  const [drawer, setDrawer] = useState(false)
+ 
   const [items, setItems] = useState([])
-    const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([])
   const [currentClient, setCurrentClient] = useState()
   const [currentClientID, setCurrentClientID] = useState()
   const [isAuthenticated, setIsAuthenticated] = useState(true)
@@ -126,7 +126,7 @@ const Home = () => {
   // ___FETCH CLIENTS
   const getCurrentClient = async () => {
     try {
-      const res = await fetch("https://thegreatcat.herokuapp.com/home/", {
+      const res = await fetch("https://thegreatcat.herokuapp.com/home", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -175,7 +175,10 @@ const Home = () => {
         email: email,
         password: password
       }).then(
-        (response) => {
+        (response, error) => {
+          if (error){
+            console.log(error)
+          }else
           setClients(response.data)
         }
       )
@@ -429,18 +432,18 @@ const list = (anchor) => (
                           
                               
 
-                              <FormControl onSubmit={updateProfile} id={getOne.id}>
-
-                                <Input sx={{width: 400}} type='text' placeholder='First Name' onChange={e => setFirstName(e.target.value)} /><br />
+                             <form onSubmit={updateProfile} id={getOne.id}>
+                                <FormControl >                               
+                                <Input sx={{width:400}} type='text' placeholder='First Name' onChange={e => setFirstName(e.target.value)} /><br />
                                 <Input type='text' placeholder='Last Name' onChange={e => setLastName(e.target.value)} /><br />
                                 <Input type='text' placeholder='Pets' onChange={e => setPets(e.target.value)} /><br />
                                 <Input type='text' placeholder='Email' onChange={e => setEmail(e.target.value)} /><br />
-                                <Input type='text' placeholder='Password' onChange={e => setPassword(e.target.value)} /><br />
+                                <Input type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} /><br />
                                 <Input type='number' placeholder='Phone' onChange={e => setPhone(e.target.value)} /><br />
-                                <Button variant="contained" type='submit' value='Submit'>Update</Button>
+                                <Button variant="contained"  type='submit' value='Submit'/>
                                 <Button sx={{ marginTop: 2 }} variant="contained" onClick={deleteProfile} value={getOne.id}>Delete Profile</Button>
-
-                              </FormControl>
+                                </FormControl> 
+                                </form>
 
                             
                           </div>
