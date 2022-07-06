@@ -18,6 +18,25 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
+const theme = createTheme(
+  {
+    palette: {
+      primary: {
+        main: '#00897b',
+      },
+      secondary: {
+        main: '#ffffff',
+      },
+    },
+    typography: {
+      fontFamily: [
+        'Amatic SC',
+        'cursive',
+      
+      ].join(','),
+    },
+  }
+)
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -31,18 +50,6 @@ function Copyright() {
   );
 }
 
-const theme = createTheme(
-  {
-    palette: {
-      primary: {
-        main: '#00897b',
-      },
-      secondary: {
-        main: '#ffffff',
-      },
-    },
-  }
-)
 
 
 const SignUp = () => {
@@ -100,7 +107,7 @@ const SignUp = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid container component="main" sx={{ height: '100vh'}}>
           <CssBaseline />
 
           <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -112,8 +119,9 @@ const SignUp = () => {
                 Create an Account
               </Typography>
               {!isAuthenticated ?
-                <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={createProfile}>
+                <Box  component="form" noValidate sx={{ mt: 1 }} onSubmit={createProfile}>
                   <TextField
+                   
                     margin="normal"
                     required
                     fullWidth
@@ -182,7 +190,7 @@ const SignUp = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, fontSize: 20, fontWeight: 'bold' }}
                   >
                     Sign Up
                   </Button>
@@ -201,12 +209,12 @@ const SignUp = () => {
 
                 <FormHelperText ><h3>Already Have an Account? Sign In!</h3>
                   <Link class='link' to="/login">
-                    <Button sx={{ width: 250 }} variant="contained"> Sign In </Button>
+                    <Button sx={{ width: 250, fontSize: 20, fontWeight: 'bold'  }} variant="contained"> Sign In </Button>
                   </Link>
                 </FormHelperText>
                 <FormHelperText ><h3>Or Go back to the Main Page</h3>
                   <Link class='link' to="/">
-                    <Button sx={{ width: 250 }} variant="contained"> Main Page </Button>
+                    <Button sx={{ width: 250, fontSize: 20, fontWeight: 'bold' }} variant="contained"> Main Page </Button>
                   </Link>
                 </FormHelperText>
               </Typography>

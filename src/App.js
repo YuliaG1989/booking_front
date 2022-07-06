@@ -25,6 +25,7 @@ import { useLocation } from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import {FaCat} from 'react-icons/fa';
 
 function Copyright() {
   return (
@@ -48,6 +49,12 @@ const theme = createTheme(
       secondary: {
         main: '#ffffff',
       },
+    },
+    typography: {
+      fontFamily: [
+        'Amatic SC',
+        'cursive',
+      ].join(','),
     },
   }
 )
@@ -83,31 +90,32 @@ function App() {
 
       <ThemeProvider theme={theme}>
 
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
           <AppBar position="absolute" >
             <Toolbar sx={{
-              display: { xs: "flex" },
+              display:  "flex" ,
+              
               flexDirection: "row",
-
-              justifyContent: "space-between"
+              justifyContent: "space-between",
+              
             }}>
               <Toolbar>
                 <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 0.5 }}>
-                  <h1>The Great Catsby.</h1>
+                  <h1>The Great Catsby<FaCat/></h1>
                 </Typography>
               </Toolbar>
               <Toolbar>
-                <Link class='link' to="/login" >
-                  <Button variant="contained" >Sign in</Button>
-                </Link>
-                <Link class='link' to="/signup" >
-                  <Button variant="contained">Sign Up</Button>
-                </Link >
+                
 
                 {isAuthenticated ? <Link class='link' to="/home"> 
-                  <Button variant="contained"> Your Account</Button>
-                </Link> : ""}
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained"> Your Account</Button>
+                </Link> : 
+                <>
+                <Link class='link' to="/login" >
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" >Sign in</Button>
+                </Link>
+                <Link class='link' to="/signup" >
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained">Sign Up</Button>
+                </Link > </>}
               </Toolbar>
             </Toolbar>
           </AppBar>
@@ -125,20 +133,15 @@ function App() {
             <Toolbar />
            
             <Container sx={{marginTop: '100px'}}>
-            <h2><i>No more cages, kennels, growls, or yowls. 
+              <Typography sx={{fontSize: 25}}>
+            <h2>No more cages, kennels, growls, or yowls. 
             Cats deserve quality, in-home care and that's why we've created a nationwide network of trusted and insured cat sitters 
-            who can bring the purrfect hospitality to you!</i></h2>
+            who can bring the purrfect hospitality to you!</h2>
+            </Typography>
             </Container>
-              <Paper elevation={7}
-                sx={{
-                  height: 300,
-                  width: '100vw',
-                  marginTop: 10,
-                  backgroundColor: 'rgba(255, 255, 255, 0.5)'
-                }}
-              >
-                <Grid sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <Card sx={{ width: 400, marginRight: 10 }}>
+            
+                <Grid sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <Card sx={{ width: 400, margin: 2 }}>
 
                     <CardMedia
                       component="img"
@@ -147,7 +150,7 @@ function App() {
                       alt="cat"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+                      <Typography gutterBottom variant="h3" component="div">
                         Create a profile!
                       </Typography>
 
@@ -155,11 +158,11 @@ function App() {
 
 
                     <Link class='link' to="/signup" >
-                      <Button size='small' color='primary'>Here</Button>
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
                     </Link >
 
                   </Card>
-                  <Card sx={{ width: 400, marginRight: 10 }}>
+                  <Card sx={{ width: 400, margin: 2 }}>
 
                     <CardMedia
                       component="img"
@@ -168,7 +171,7 @@ function App() {
                       alt="cat"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+                      <Typography gutterBottom variant="h3" component="div">
                         Login
                       </Typography>
 
@@ -176,12 +179,12 @@ function App() {
 
 
                     <Link class='link' to="/login" >
-                      <Button size='small' color='primary'>Here</Button>
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
                     </Link >
 
                   </Card>
 
-                  <Card sx={{ width: 400, marginRight: 10 }}>
+                  <Card sx={{  width: 400, margin: 2 }}>
                     <CardMedia
                       component="img"
                       height="140"
@@ -189,7 +192,7 @@ function App() {
                       alt="cat"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+                      <Typography gutterBottom variant="h3" component="div">
                         Book a stay
                       </Typography>
 
@@ -197,11 +200,11 @@ function App() {
 
 
                     <Link class='link' to="/login" >
-                      <Button size='small' color='primary'>Here</Button>
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
                     </Link >
 
                   </Card>
-                  <Card sx={{ width: 400 }}>
+                  <Card sx={{  width: 400, margin: 2 }}>
 
                     <CardMedia
                       component="img"
@@ -210,7 +213,7 @@ function App() {
                       alt="cat"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+                      <Typography gutterBottom variant="h4" component="div">
                         See our store
                       </Typography>
 
@@ -218,29 +221,24 @@ function App() {
 
 
                     <Link class='link' to="/login" >
-                      <Button size='small' color='primary'>Here</Button>
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
                     </Link >
 
                   </Card>
                 </Grid>
 
-              </Paper>
 
 
-            <Grid item xs={12}>
-              <Paper sx={{
-                display: 'flex', flexDirection: 'column', backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                backgroundImage: 'url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80)',
-                height: 500,
-                backgroundSize: 'cover'
-              }}>
-
-              </Paper>
+            <Grid item xs={12} sx={{
+               backgroundImage: 'url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80)',
+               height: 500,
+               backgroundSize: 'cover'
+            }}>
+           
             </Grid>
           </Box>
 
-        </Box>
-
+    
         <footer>
           <Copyright color='primary' sx={{ pt: 4 }} />
         </footer>

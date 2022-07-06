@@ -26,7 +26,28 @@ import ListItemText from '@mui/material/ListItemText';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import Modal from '@mui/material/Modal'
 import Checkout from './Checkout'
+import { FaShoppingCart, FaStore} from 'react-icons/fa';
 
+
+const theme = createTheme(
+  {
+    palette: {
+      primary: {
+        main: '#00897b',
+      },
+      secondary: {
+        main: '#ffffff',
+      },
+    },
+    typography: {
+      fontFamily: [
+        'Amatic SC',
+        'cursive',
+      
+      ].join(','),
+    },
+  }
+)
 const style = {
   position: 'absolute',
   top: '50%',
@@ -55,23 +76,8 @@ function Copyright() {
     </Typography>
   );
 }
-const theme = createTheme(
-  {
-    palette: {
-      primary: {
-        main: '#00897b',
-      },
-      secondary: {
-        main: '#ffffff',
-      },
-    },
-  }
-)
 
-
-
-
-
+  
 
 
 const Home = () => {
@@ -112,7 +118,7 @@ const Home = () => {
 
     return (
       <>
-        <Button variant="contained" onClick={handleOpen}>Checkout</Button>
+        <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" onClick={handleOpen}>Checkout</Button>
         <Modal
           hideBackdrop
           open={open}
@@ -121,7 +127,7 @@ const Home = () => {
         >
           <Box sx={{ ...style, width: 800 }}>
             <Checkout />
-            <Button variant="contained" onClick={handleClose}>Checkout</Button>
+            <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" onClick={handleClose}>Checkout</Button>
           </Box>
         </Modal>
       </>
@@ -157,15 +163,29 @@ const Home = () => {
   // ___FETCH CLIENTS
 
 
-  const getClients = () => {
-    axios.get("https://thegreatcat.herokuapp.com/").then(response => {
-      setClients(response.data)
-    })
-  }
+  const getClients = async () => {
+    try {
+      const response = await fetch("https://thegreatcat.herokuapp.com/");
+      const jsonData = await response.json();
+
+      setClients(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   useEffect(() => {
     getClients();
   }, []);
+  //  () => {
+  //   axios.get("https://thegreatcat.herokuapp.com/").then(response => {
+  //     setClients(response.data)
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   getClients();
+  // }, []);
 
   // ____UPDATE PROFILE
 
@@ -182,7 +202,7 @@ const updateProfile = async e => {
       }
     );
 
-    // window.location = '/home';
+    window.location.reload(true);
   } catch (err) {
     console.error(err.message);
   }
@@ -245,9 +265,9 @@ const updateProfile = async e => {
       0
     );
   };
-  const removeFromCart = (id) => {
-
-    setCart(cart.find((cartitem) => cartitem.id !== id))
+  const removeFromCart = (e, id) => {
+    e.preventDefault();
+    setCart(cart.find((cartitem) => cartitem.id == id))
 
   }
 
@@ -270,7 +290,7 @@ const updateProfile = async e => {
     // onClick={toggleDrawer(anchor, false)}
 
     >
-      <Button onClick={toggleDrawer(anchor, false)}>Close</Button>
+      <Button sx={{fontSize: 20, fontWeight: 'bold'}} onClick={toggleDrawer(anchor, false)}>Close</Button>
       <List>
 
         {items.map((item) => {
@@ -302,28 +322,24 @@ const updateProfile = async e => {
 
   return (
     <>
-
       <ThemeProvider theme={theme}>
-
-
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="absolute" >
             <Toolbar sx={{
               display: { xs: "flex" },
               flexDirection: "row",
-
               justifyContent: "space-between"
             }}>
-              <Toolbar>
-                <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 0.5 }}>
-                  <h2>Hello, {currentClient}!</h2>
+              <Toolbar sx={{fontSize : 20}}>
+                <Typography color="inherit" noWrap sx={{fontSize : 20, flexGrow: 0.5 }}>
+                 
+                 <h1>Hello, {currentClient}!</h1>
                 </Typography>
-              </Toolbar>
-              <Toolbar>
+                <FaShoppingCart  variant="contained" onClick={handleOpen}/>({cart.length})
                 {['shop'].map((anchor) => (
                   <>
-                    <Button variant="contained" onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                    <FaStore variant="contained" onClick={toggleDrawer(anchor, true)}/>
                     <Drawer
                       anchor={anchor}
                       open={state[anchor]}
@@ -333,11 +349,14 @@ const updateProfile = async e => {
                     </Drawer>
                   </>
                 ))}
-                <Button variant="contained" onClick={handleOpen}>Cart({cart.length})</Button>
-                <Link class='link' to="/" state={{cart:cart}}  >
-                  <Button variant="contained"> Main Page </Button>
+                
+                
+              </Toolbar>
+              <Toolbar>
+              <Link class='link' to="/"  >
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}}  variant="contained"> Main Page </Button>
                 </Link>
-                <Button variant="contained" onClick={Logout}> LogOut</Button>
+                <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" onClick={Logout}> LogOut</Button>
 
                 <Modal
                   open={open}
@@ -361,7 +380,7 @@ const updateProfile = async e => {
                               <button onClick={() => handleChange(cartitem, -1)}>-</button>
                             </div>
 
-                            <Button variant="contained" onClick={removeFromCart}>Remove</Button>
+                            {/* <Button variant="contained" onClick={removeFromCart}>Remove</Button> */}
                           </Grid>
 
                         )
@@ -369,7 +388,7 @@ const updateProfile = async e => {
                     </Grid>
 
                     <h3>Total : {getTotalSum()} $</h3>
-                    <Button variant="contained" onClick={() => setCart([])}>Clear</Button>
+                    <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" onClick={() => setCart([])}>Clear</Button>
 
                     <ChildModal />
                   </Box>
@@ -436,6 +455,7 @@ const updateProfile = async e => {
                       p: 2,
                       display: 'flex',
                       flexDirection: 'column',
+                      width: 'auto',
                       height: 'auto',
                       backgroundColor: 'rgba(255, 255, 255, 0.5)'
                     }}
@@ -445,7 +465,7 @@ const updateProfile = async e => {
                         return (
 
                           <div className='clients' key={getOne.id}>
-                            <Typography component="h4" variant="h5">
+                            <Typography sx={{fontSize : 30}} >
                               <ul>
 
                                 <li> <b>Pets:</b> <i>{getOne.pets}</i></li>
@@ -457,19 +477,19 @@ const updateProfile = async e => {
                             </Typography>
 
                             <form onSubmit={updateProfile} id={getOne.id}>
-                              <FormControl >
-
-                                <Input sx={{ width: 400 }} type='text' placeholder='First Name' onChange={e => setFirstName(e.target.value)} /><br />
-                                <Input type='text' placeholder='Last Name' onChange={e => setLastName(e.target.value)} /><br />
-                                <Input type='text' placeholder='Pets' onChange={e => setPets(e.target.value)} /><br />
-                                <Input type='text' placeholder='Email' onChange={e => setEmail(e.target.value)} /><br />
+                              <FormControl   >
+                               
+                                <Input sx={{ width: 300, fontSize: 20, fontWeight:'bold' }} type='text' placeholder='First Name' onChange={e => setFirstName(e.target.value)} /><br />
+                                <Input sx={{ width: 300, fontSize: 20, fontWeight:'bold' }} type='text' placeholder='Last Name' onChange={e => setLastName(e.target.value)} /><br />
+                                <Input sx={{ width: 300, fontSize: 20, fontWeight:'bold' }} type='text' placeholder='Pets' onChange={e => setPets(e.target.value)} /><br />
+                                <Input sx={{ width: 300, fontSize: 20, fontWeight:'bold' }} type='text' placeholder='Email' onChange={e => setEmail(e.target.value)} /><br />
                                 <Input type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} /><br />
-                                <Input type='number' placeholder='Phone' onChange={e => setPhone(e.target.value)} /><br />
-                                <Button variant="contained" type='submit' value='Submit'>Update</Button>
-                                <Button sx={{ marginTop: 2 }} variant="contained" onClick={deleteProfile} value={getOne.id}>Delete Profile</Button>
-
+                                <Input sx={{ width: 300, fontSize: 20, fontWeight:'bold' }} type='number' placeholder='Phone' onChange={e => setPhone(e.target.value)} /><br />
+                                <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" type='submit' value='Submit'>Update</Button>
+                                <Button sx={{fontSize: 20, fontWeight: 'bold', marginTop: 2 }} variant="contained" onClick={deleteProfile} value={getOne.id}>Delete Profile</Button>
+                                
                               </FormControl>
-                            </form>
+                              </form>
 
 
                           </div>
