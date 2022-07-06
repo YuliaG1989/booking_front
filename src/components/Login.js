@@ -186,7 +186,7 @@ const Login = () => {
                 </FormHelperText>
               </Typography>
             </Box>
-            <Copyright sx={{ mt: 5 }} />
+            
           </Grid>
         </Grid>
         <footer>
