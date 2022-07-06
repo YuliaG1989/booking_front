@@ -18,7 +18,25 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-
+const theme = createTheme(
+  {
+    palette: {
+      primary: {
+        main: '#00897b',
+      },
+      secondary: {
+        main: '#ffffff',
+      },
+    },
+    typography: {
+      fontFamily: [
+        'Amatic SC',
+        'cursive',
+      
+      ].join(','),
+    },
+  }
+)
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -32,18 +50,7 @@ function Copyright() {
   );
 }
 
-const theme = createTheme(
-  {
-    palette: {
-      primary: {
-        main: '#00897b',
-      },
-      secondary: {
-        main: '#ffffff',
-      },
-    },
-  }
-)
+
 
 
 const Login = () => {
@@ -128,8 +135,11 @@ const Login = () => {
                     name="email"
                     autoComplete="email"
                     autoFocus onChange={e => onChange(e)}
+                 
+
                   />
                   <TextField
+                  
                     margin="normal"
                     required
                     fullWidth
@@ -143,11 +153,11 @@ const Login = () => {
                     control={<Checkbox value="remember" color="primary" />}
                     label="Remember me"
                   />
-                  <Button
+                  <Button 
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, fontSize: 20, fontWeight: 'bold' }}
                   >
                     Sign In
                   </Button>
@@ -164,14 +174,14 @@ const Login = () => {
                 : <Navigate to="/home" />}
               <Typography variant="body2" color="text.secondary" align="center">
 
-                <FormHelperText ><h3>Don't Have an Account? Create One</h3>
+                <FormHelperText  ><h3>Don't Have an Account? Create One</h3>
                   <Link class='link' to="/signup">
-                    <Button sx={{ width: 250 }} variant="contained"> Sign Up </Button>
+                    <Button sx={{ width: 250, fontSize: 20, fontWeight: 'bold' }} variant="contained"> Sign Up </Button>
                   </Link>
                 </FormHelperText>
                 <FormHelperText ><h3>Or Go back to the Main Page</h3>
                   <Link class='link' to="/">
-                    <Button sx={{ width: 250 }} variant="contained"> Main Page </Button>
+                    <Button sx={{ width: 250 , fontSize: 20, fontWeight: 'bold'}} variant="contained"> Main Page </Button>
                   </Link>
                 </FormHelperText>
               </Typography>

@@ -1,11 +1,10 @@
 import './App.css';
-import {React, useState, useEffect} from 'react';
+import { React, useState, useEffect } from 'react';
 import axios from 'axios';
-import {BrowserRouter, Routes, Route, Navigate, Link} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
-import Store from './components/Store'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import Input from '@mui/material/Input'
@@ -21,15 +20,12 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import { useLocation } from 'react-router-dom'
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem'
-import { createRoot } from 'react-dom/client';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import {FaCat} from 'react-icons/fa';
 
 function Copyright() {
   return (
@@ -54,27 +50,24 @@ const theme = createTheme(
         main: '#ffffff',
       },
     },
+    typography: {
+      fontFamily: [
+        'Amatic SC',
+        'cursive',
+      ].join(','),
+    },
   }
 )
 
 
 
 function App() {
-  // const [clients, setClients] = useState([])
-  // const [firstname, setFirstName] = useState()
-  // const [lastname, setLastName] = useState()
-  // const [pets, setPets] = useState([])
-  // const[email, setEmail] = useState()
-  // const[password, setPassword] = useState()
-  // const [phone, setPhone] = useState()
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const setAuth = boolean => {
-    setIsAuthenticated(boolean);
-  }
+
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:5000/verify", {
+      const res = await fetch("https://thegreatcat.herokuapp.com/verify", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -92,137 +85,164 @@ function App() {
   }, []);
 
 
-//___CREATE PROFILE
-
-
-// ____UPDATE PROFILE
-//  const updateProfile = (event) => {
-//   event.preventDefault();
-  
-//   axios.put( "http://localhost:5000/" + event.target.id,
-//          {
-//     firstname: firstname,
-//     lastname: lastname,
-//     pets: pets,
-//     phone: phone ,
-//     email: email, 
-//     password: password
-//          }).then(
-//       (response) => {
-//           setClients(response.data)
-//       }
-//   )
-// }
-// ____DELETE PROFILE
-
-// const deleteProfile = (event) => {
-//   axios.delete("http://localhost:5000/" + event.target.value).then(
-//       (response) => {
-//           setClients(
-//              response.data
-//           )
-//       }
-//   )
-
-// }
-
   return (
     <>
- 
-        <ThemeProvider theme={theme}>
-        <Routes>
- 
-    {/* <Route path="/" element={<App />} /> */}
-    <Route exact path="/login" element={<Login />}  />
-    <Route exact path="/signup" element={<SignUp/>}/>
-    <Route exact path="/home" element={<Home />} />
-    {/* <Route exact path="/store" element={<Store />}/> */}
-  </Routes>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="absolute" >
-          <Toolbar sx={{
-            display: { xs: "flex" },
-            flexDirection: "row",
-        
-            justifyContent: "space-between"
-          }}>
-            <Toolbar>
-            <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow:0.5 }}>
-             <h1>The Great Catsby.</h1>
-            </Typography>
-            </Toolbar>
-            <Toolbar>
-            <Link class='link' to="/login" >
-         <Button variant="contained" >Sign in</Button>
-          </Link> 
-        <Link class='link' to="/signup" >
-        <Button variant="contained">Sign Up</Button>
-        </Link > 
-       
-        {isAuthenticated ? <Link class='link'  to="/home" >
-        <Button variant="contained"> Your Account</Button>
-        </Link> : ""}
-        </Toolbar>
-          </Toolbar>
-        </AppBar>
-       
-      
-        <Box
-          component="main"
-          sx={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)',
-          
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-          }}
-        >
-          <Toolbar />
-              <Container> 
-            
 
-              <Grid>
-                <Paper elevation={7}
-                  sx={{
-                  
-                    height: 'auto',
-                    width: '80vw',
-                    marginTop: 10,
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
-                  }}
-                >
-                  <h1>Book a stay!</h1>
-                  <h1>Schedule Grooming Sesh!</h1>
-                  <h1>There's also a little store!</h1>
-                  <Link class='link' to="/login" >
-         {/* <Button variant="contained" >Sign in</Button> */}
-                  <h1> Sign in to check it out!</h1>
-                  </Link>
-                  <Link class='link' to="/signup" >
-                    <h1> Sign up if you don't have an account!</h1>
-                  </Link>  
-            </Paper>
+      <ThemeProvider theme={theme}>
+
+          <AppBar position="absolute" >
+            <Toolbar sx={{
+              display:  "flex" ,
               
-            
-        
-   
-    </Grid>
-  
-
-              {/* <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+              flexDirection: "row",
+              justifyContent: "space-between",
+              
+            }}>
+              <Toolbar>
+                <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 0.5 }}>
+                  <h1>The Great Catsby<FaCat/></h1>
+                </Typography>
+              </Toolbar>
+              <Toolbar>
                 
-                </Paper>
-              </Grid> */}
-        </Container>
-        
-        </Box>
-      </Box>
-      <footer>
+
+                {isAuthenticated ? <Link class='link' to="/home"> 
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained"> Your Account</Button>
+                </Link> : 
+                <>
+                <Link class='link' to="/login" >
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained" >Sign in</Button>
+                </Link>
+                <Link class='link' to="/signup" >
+                  <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant="contained">Sign Up</Button>
+                </Link > </>}
+              </Toolbar>
+            </Toolbar>
+          </AppBar>
+
+
+          <Box
+
+            sx={{
+              // backgroundImage: 'url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80)',
+              flexGrow: 1,
+              height: '100vh',
+              overflow: 'auto',
+            }}
+          >
+            <Toolbar />
+           
+            <Container sx={{marginTop: '100px'}}>
+              <Typography sx={{fontSize: 25}}>
+            <h2>No more cages, kennels, growls, or yowls. 
+            Cats deserve quality, in-home care and that's why we've created a nationwide network of trusted and insured cat sitters 
+            who can bring the purrfect hospitality to you!</h2>
+            </Typography>
+            </Container>
+            
+                <Grid sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <Card sx={{ width: 400, margin: 2 }}>
+
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image='https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
+                      alt="cat"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h3" component="div">
+                        Create a profile!
+                      </Typography>
+
+                    </CardContent>
+
+
+                    <Link class='link' to="/signup" >
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
+                    </Link >
+
+                  </Card>
+                  <Card sx={{ width: 400, margin: 2 }}>
+
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image='https://images.unsplash.com/photo-1602924097911-a78ca1af38c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1133&q=80'
+                      alt="cat"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h3" component="div">
+                        Login
+                      </Typography>
+
+                    </CardContent>
+
+
+                    <Link class='link' to="/login" >
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
+                    </Link >
+
+                  </Card>
+
+                  <Card sx={{  width: 400, margin: 2 }}>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image='https://images.unsplash.com/photo-1565190462842-d57a3e05de48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=723&q=80'
+                      alt="cat"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h3" component="div">
+                        Book a stay
+                      </Typography>
+
+                    </CardContent>
+
+
+                    <Link class='link' to="/login" >
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
+                    </Link >
+
+                  </Card>
+                  <Card sx={{  width: 400, margin: 2 }}>
+
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image='https://images.unsplash.com/photo-1609533440656-68c27fc2862d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1076&q=80'
+                      alt="cat"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h4" component="div">
+                        See our store
+                      </Typography>
+
+                    </CardContent>
+
+
+                    <Link class='link' to="/login" >
+                      <Button sx={{fontSize: 20, fontWeight: 'bold'}} variant='contained' color='primary'>Here</Button>
+                    </Link >
+
+                  </Card>
+                </Grid>
+
+
+
+            <Grid item xs={12} sx={{
+               backgroundImage: 'url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80)',
+               height: 500,
+               backgroundSize: 'cover'
+            }}>
+           
+            </Grid>
+          </Box>
+
+    
+        <footer>
           <Copyright color='primary' sx={{ pt: 4 }} />
-          </footer>
-    </ThemeProvider>
+        </footer>
+      </ThemeProvider>
 
 
 
